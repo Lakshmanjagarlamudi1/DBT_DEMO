@@ -2,14 +2,14 @@ WITH TRIP AS (
 
     SELECT
     RIDE_ID,
-    RIDABLE_TYPE,
+    -- RIDABLE_TYPE,
     DATE(TO_TIMESTAMP(STARTED_AT)) AS TRIP_DATE,
     START_STATION_ID,
     END_STATION_ID,
     MEMBER_CASUAL,
     TIMEDIFF( SECONDS , TO_TIMESTAMP(STARTED_AT) , TO_TIMESTAMP(ENDED_AT) ) AS TRIP_DURATION_SEC
     
-    FROM {{ source('demo', 'bike') }}
+    FROM {{ ref('bike_stage') }}
     WHERE RIDE_ID != 'ride_id'
 
 )

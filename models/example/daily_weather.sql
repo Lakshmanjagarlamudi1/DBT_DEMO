@@ -19,7 +19,7 @@ from {{ source('demo', 'weather') }}
 daily_weather_agg as (
 
 select
-daily_weather,
+daily_weather as Date,
 weather,
 round(avg(temp),2) as avg_temp,
 round(avg(pressure),2) as avg_pressure,
